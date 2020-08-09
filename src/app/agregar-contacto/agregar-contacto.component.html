@@ -1,0 +1,45 @@
+{{ element }}
+<div class="card" *ngIf="valido">
+    <div class="card-body">
+        <h3 class="card-title">Crear Contacto</h3>
+        <div class="card-text">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form);">
+
+                <div class="form-group">
+                    <label for="titulo">Titulo</label>
+                    <select #titulo="ngModel" name="titulo" class="form-control" id="titulo"
+                        [(ngModel)]="contacto.titulo">
+                        <option *ngFor="let titulo of titulos" [value]="titulo">{{titulo}}</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" #nombre="ngModel" name="nombre" type="text" minlength="3" class="form-control"
+                        required [(ngModel)]="contacto.nombre">
+                </div>
+                <div [hidden]="nombre.valid || email.pristine" class="alert alert-danger">
+                    El nombre es un campo requerido y debe ser mayor a 3 caracteres.
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electronico</label>
+                    <input id="email" #email="ngModel" name="email" type="email" class="form-control" email required
+                        [(ngModel)]="contacto.correo">
+                </div>
+
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    El correo electronico es un campo requerido.
+                </div>
+
+                <div class="form-group">
+                    <label for="numero">Numero</label>
+                    <input id="numero" #numero="ngModel" name="numero" type="text" class="form-control" required
+                        [(ngModel)]="contacto.numero">
+                </div>
+                <button type="submit" class="btn btn-block btn-success" [disabled]="!form.form.valid">Guardar
+                    Contacto</button>
+            </form>
+        </div>
+    </div>
+</div>

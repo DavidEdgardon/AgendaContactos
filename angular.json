@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AgendaContactos"
+    }
+  },
+  "defaultProject": "AgendaContactos",
+  "cli": {
+    "analytics": "c3f5c7f5-d68a-44a2-bd29-d1dc28d3c367"
+  }
 }

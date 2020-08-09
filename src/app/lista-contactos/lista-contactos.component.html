@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">Lista de Contactos</h2>
+    </div>
+    
+    <div class="card-text">
+        <app-listar-contactos (deleteRequest)="eliminarContacto($event);" [contactos]="contactos"></app-listar-contactos>
+    </div>
+</div>

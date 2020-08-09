@@ -1,0 +1,60 @@
+<app-filter-texbox (changed)="filtrar($event)"></app-filter-texbox>
+<br>
+<br>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <th>Titulo</th>
+                        <th>Nombre</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let contacto of contactoFiltrado " (click)="mostrarContacto(contacto)">
+                            <td>{{ contacto.titulo | titlecase }}</td>
+                            <td>{{ contacto.nombre | titlecase }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<button class="btn btn-primary btn-lg btn-block" (click)="validar()">Agregar contacto</button>
+<br>
+<br>
+<div>
+    <app-agregar-contacto [valido]="validacion" (agregarContacto)="agregarContacto($event);"></app-agregar-contacto>
+</div>
+
+<div class="card" *ngIf="contactoSeleccionado">
+    <div class="card-body">
+        <div class="card-text">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <div class="form-group">
+                        Titulo:
+                        <input type="text" class="form-control" disabled [value]="contactoSeleccionado.titulo">
+                    </div>
+                    <div class="form-group">
+                        Nombre:
+                        <input type="text" class="form-control" disabled [value]="contactoSeleccionado.nombre">
+                    </div>
+                    <div class="form-group">
+                        Correo Electronico:
+                        <input type="text" class="form-control" disabled [value]="contactoSeleccionado.correo">
+                    </div>
+                    <div class="form-group">
+                        Numero:
+                        <input type="text" class="form-control" disabled [value]="contactoSeleccionado.numero">
+                    </div>
+                </table>
+                <button class="btn btn-block btn-danger" (click)="eliminar()">Borrar contacto</button>
+            </div>
+        </div>
+    </div>
+</div>
